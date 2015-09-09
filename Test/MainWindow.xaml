@@ -1,0 +1,128 @@
+﻿<Window x:Class="Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialMenu="clr-namespace:MaterialMenu;assembly=MaterialMenu"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Calibri"
+        FontSize="16"
+        Foreground="WhiteSmoke">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="map2.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <materialMenu:SideMenu HorizontalAlignment="Left" x:Name="Menu" 
+                               MenuWidth="400" 
+                               Shown="False"
+                               Theme="Primary"
+                               BackgroundOpacity=".9">
+            <materialMenu:SideMenu.Menu>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Foreground="WhiteSmoke" FontFamily="Calibri" FontSize="24" MinHeight="150" FontWeight="UltraBold">
+                            <TextBlock.Background>
+                                <ImageBrush ImageSource="colors.jpg" Stretch="UniformToFill"></ImageBrush>
+                            </TextBlock.Background>
+                            <TextBlock.Text>Welcome</TextBlock.Text>
+                        </TextBlock>
+                        <materialMenu:MenuButton Image="boss.png" Text="Administration">
+                            <materialMenu:MenuButton.Children>
+                                <materialMenu:MenuButton Image="boxl.png" Text="Packing"></materialMenu:MenuButton>
+                                <materialMenu:MenuButton Image="bugl.png" Text="Logistics">
+                                    <materialMenu:MenuButton.Children>
+                                        <materialMenu:MenuButton Image="boxl.png" Text="Packing"></materialMenu:MenuButton>
+                                        <materialMenu:MenuButton Image="bugl.png" Text="Logistics"></materialMenu:MenuButton>
+                                        <materialMenu:MenuButton Image="orgl.png" Text="Org">
+                                            <materialMenu:MenuButton.Children>
+                                                <materialMenu:MenuButton Image="boxl.png" Text="Packing"></materialMenu:MenuButton>
+                                                <materialMenu:MenuButton Image="bugl.png" Text="Logistics"></materialMenu:MenuButton>
+                                                <materialMenu:MenuButton Image="orgl.png" Text="Org"></materialMenu:MenuButton>
+                                                <materialMenu:MenuButton Image="savel.png" Text="SaveChanges">
+                                                    <materialMenu:MenuButton.Children>
+                                                        <materialMenu:MenuButton Image="boxl.png" Text="Packing"></materialMenu:MenuButton>
+                                                        <materialMenu:MenuButton Image="bugl.png" Text="Logistics"></materialMenu:MenuButton>
+                                                        <materialMenu:MenuButton Image="orgl.png" Text="Org"></materialMenu:MenuButton>
+                                                        <materialMenu:MenuButton Image="savel.png" Text="SaveChanges"></materialMenu:MenuButton>
+                                                        <materialMenu:MenuButton Image="Helpl.png" Text="Help">
+                                                            <materialMenu:MenuButton.Children>
+                                                                <materialMenu:MenuButton Image="boxl.png" Text="Packing"></materialMenu:MenuButton>
+                                                                <materialMenu:MenuButton Image="bugl.png" Text="Logistics"></materialMenu:MenuButton>
+                                                                <materialMenu:MenuButton Image="orgl.png" Text="Org"></materialMenu:MenuButton>
+                                                                <materialMenu:MenuButton Image="savel.png" Text="SaveChanges"></materialMenu:MenuButton>
+                                                                <materialMenu:MenuButton Image="Helpl.png" Text="Help"></materialMenu:MenuButton>
+                                                                <materialMenu:MenuButton Image="timesl.png" Text="Close Menu">
+                                                                    <materialMenu:MenuButton.Children>
+                                                                        <materialMenu:MenuButton Image="boxl.png" Text="Packing"></materialMenu:MenuButton>
+                                                                        <materialMenu:MenuButton Image="bugl.png" Text="Logistics"></materialMenu:MenuButton>
+                                                                        <materialMenu:MenuButton Image="orgl.png" Text="Org"></materialMenu:MenuButton>
+                                                                        <materialMenu:MenuButton Image="savel.png" Text="SaveChanges"></materialMenu:MenuButton>
+                                                                        <materialMenu:MenuButton Image="Helpl.png" Text="Help"></materialMenu:MenuButton>
+                                                                        <materialMenu:MenuButton Image="timesl.png" Text="Close Menu"></materialMenu:MenuButton>
+                                                                    </materialMenu:MenuButton.Children>
+                                                                </materialMenu:MenuButton>
+                                                            </materialMenu:MenuButton.Children>
+                                                        </materialMenu:MenuButton>
+                                                        <materialMenu:MenuButton Image="timesl.png" Text="Close Menu"></materialMenu:MenuButton>
+                                                    </materialMenu:MenuButton.Children>
+                                                </materialMenu:MenuButton>
+                                                <materialMenu:MenuButton Image="Helpl.png" Text="Help"></materialMenu:MenuButton>
+                                                <materialMenu:MenuButton Image="timesl.png" Text="Close Menu"></materialMenu:MenuButton>
+                                            </materialMenu:MenuButton.Children>
+                                        </materialMenu:MenuButton>
+                                        <materialMenu:MenuButton Image="savel.png" Text="SaveChanges"></materialMenu:MenuButton>
+                                        <materialMenu:MenuButton Image="Helpl.png" Text="Help"></materialMenu:MenuButton>
+                                        <materialMenu:MenuButton Image="timesl.png" Text="Close Menu"></materialMenu:MenuButton>
+                                    </materialMenu:MenuButton.Children>
+                                </materialMenu:MenuButton>
+                                <materialMenu:MenuButton Image="orgl.png" Text="Org"></materialMenu:MenuButton>
+                                <materialMenu:MenuButton Image="savel.png" Text="SaveChanges"></materialMenu:MenuButton>
+                                <materialMenu:MenuButton Image="Helpl.png" Text="Help"></materialMenu:MenuButton>
+                                <materialMenu:MenuButton Image="timesl.png" Text="Close Menu"></materialMenu:MenuButton>
+                            </materialMenu:MenuButton.Children>
+                        </materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="boxl.png" Text="Packing" MouseDown="UIElement_OnMouseDown"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="bugl.png" Text="Logistics"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="orgl.png" Text="Org"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="savel.png" Text="SaveChanges"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="Helpl.png" Text="Help"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="timesl.png" Text="Close Menu" MouseDown="CloseClick"></materialMenu:MenuButton>
+                    </StackPanel>
+                </ScrollViewer>
+            </materialMenu:SideMenu.Menu>
+        </materialMenu:SideMenu>
+        <StackPanel HorizontalAlignment="Right" Width="200" Orientation="Vertical">
+            <Button Margin="10" Click="ButtonBase_OnClick">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border Height="50" Width="50" HorizontalAlignment="Right"
+                                Background="WhiteSmoke"
+                                BorderBrush="DarkGray"
+                                BorderThickness="1"
+                                CornerRadius="3">
+                            <Image Source="Dark64.png" Margin="12"></Image>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <StackPanel Orientation="Vertical" Background="WhiteSmoke">
+                <TextBlock Foreground="Black" TextAlignment="Center" FontFamily="Calibri" FontSize="16">Select a Theme</TextBlock>
+                <Button Margin="10" Background="#303030" Foreground="WhiteSmoke" Click="DefaultClick">Default</Button>
+                <Button Margin="10" Background="#337AB6" Foreground="WhiteSmoke" Click="PrimaryClick">Primary</Button>
+                <Button Margin="10" Background="#5CB75C" Foreground="WhiteSmoke" Click="SuccessClick">Success</Button>
+                <Button Margin="10" Background="#EFAC4E" Foreground="WhiteSmoke" Click="WarningClick">Warning</Button>
+                <Button Margin="10" Background="#D8534F" Foreground="WhiteSmoke" Click="DangerClick">Danger</Button>
+            </StackPanel>
+            <StackPanel Margin="0 10" Background="WhiteSmoke">
+                <TextBlock Foreground="Black" TextWrapping="Wrap">Clicking on this button will change Auto/Manual closing type, when manual you need to press close button at menu.</TextBlock>
+                <Button Margin="10" Click="ToggleClosingTypeClick">Toogle Closing Type</Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Width="500" HorizontalAlignment="Left">
+            <TextBlock Foreground="Black">This should not be visible</TextBlock>
+            <TextBox></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>

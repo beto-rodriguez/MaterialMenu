@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="MaterialMenu.SideMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MaterialMenu"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="800" Loaded="SideMenu_OnLoaded"
+             Name="Control">
+    <UserControl.Resources>
+        <Color x:Key="ButtonBackground">#303030</Color>
+        <Color x:Key="ButtonHover">#505050</Color>
+        <SolidColorBrush x:Key="Shadow" Opacity=".2" Color="Black"></SolidColorBrush>
+        <Style TargetType="local:MenuButton">
+            <Setter Property="HoverColor" Value="{DynamicResource ButtonHover}"></Setter>
+            <Setter Property="Color" Value="{DynamicResource ButtonBackground}"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="MenuColumn" Width="400"></ColumnDefinition>
+            <ColumnDefinition x:Name="ShadowColumn" Width="0"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ContentPresenter x:Name="MenuPresenter" Grid.Column="0" Content="{Binding Menu, ElementName=Control}"></ContentPresenter>
+        <Border Grid.Column="1" Background="{DynamicResource Shadow}" MouseDown="ShadowMouseDown"></Border>
+    </Grid>
+</UserControl>
