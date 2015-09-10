@@ -81,7 +81,7 @@ A good looking animated side menu, with just one line of code. It already includ
 | `Image`  | Gets or sets button image | [`ImageSource`](https://msdn.microsoft.com/en-us/library/system.windows.media.imagesource(v=vs.110).aspx) |
 | `Text` | Gets or sets button text | `string` |
 | `AnimationSpeed` | Gets or sets color animation speen on hover | [`TimeSpan`](https://msdn.microsoft.com/en-us/library/system.timespan(v=vs.110).aspx) |
-| `Children` | Gets or sets menu children elements, they are shown only when users clicks on parent button. | `List<MenuButton>` |
+| `Children` | Gets or sets menu children elements, they are shown only when user clicks on parent button. | `List<MenuButton>` |
 | `Parent` | Gets parent menu button | [`MenuButton`](https://github.com/beto-rodriguez/MaterialMenu/blob/master/MaterialMenu/MenuButton.xaml.cs) |
 
 <h4>Methods</h4>
