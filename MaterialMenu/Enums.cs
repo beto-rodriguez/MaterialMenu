@@ -19,4 +19,10 @@
         Auto,
         Manual
     }
+
+    public enum MenuState
+    {
+        Visible, 
+        Hidden
+    }
 }

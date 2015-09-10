@@ -15,6 +15,7 @@ namespace MaterialMenu
     public partial class MenuButton 
     {
         private bool _areChildrenVisible;
+        private Brush _originalBackgound;
 
         public MenuButton()
         {
@@ -24,14 +25,9 @@ namespace MaterialMenu
             AnimationSpeed = TimeSpan.FromMilliseconds(150);
         }
 
-        public static readonly DependencyProperty HoverColorProperty = DependencyProperty.Register(
-        "HoverColor",
-        typeof(Color),
-        typeof(MenuButton));
-
-        public static readonly DependencyProperty ColorProperty = DependencyProperty.Register(
-        "Color",
-        typeof(Color),
+        public static readonly DependencyProperty HoverBackgroundProperty = DependencyProperty.Register(
+        "HoverBackground",
+        typeof(SolidColorBrush),
         typeof(MenuButton));
 
         public static readonly DependencyProperty ImageProperty = DependencyProperty.Register(
@@ -73,16 +69,10 @@ namespace MaterialMenu
             set { SetValue(TextProperty, value); }
         }
 
-        public Color HoverColor
+        public SolidColorBrush HoverBackground
         {
-            get { return (Color) GetValue(HoverColorProperty); }
-            set { SetValue(HoverColorProperty, value); }
-        }
-
-        public Color Color
-        {
-            get { return (Color)GetValue(ColorProperty); }
-            set { SetValue(ColorProperty, value); }
+            get { return (SolidColorBrush) GetValue(HoverBackgroundProperty); }
+            set { SetValue(HoverBackgroundProperty, value); }
         }
 
         public ImageSource Image
@@ -210,38 +200,32 @@ namespace MaterialMenu
 
         private void MenuButtonBase_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            //animation suddenly stopped working....
-
-            //var g = FindName("Grid") as Grid;
-            //var animation = new ColorAnimation
-            //{
-            //    To = HoverColor,
-            //    Duration = AnimationSpeed
-            //};
-            //var sb = new Storyboard();
-            //sb.Children.Add(animation);
-            //Storyboard.SetTarget(animation, g);
-            //Storyboard.SetTargetProperty(animation, new PropertyPath("(MenuButton.Background).(SolidColorBrush.Color)"));
-            //sb.Begin();
-
-            Background = new SolidColorBrush(HoverColor) {Opacity = HoverColor.A / 255d};
+            var g = FindName("Grid") as Grid;
+            var animation = new ColorAnimation
+            {
+                To = HoverBackground.Color,
+                Duration = AnimationSpeed
+            };
+            var sb = new Storyboard();
+            sb.Children.Add(animation);
+            Storyboard.SetTarget(animation, g);
+            Storyboard.SetTargetProperty(animation, new PropertyPath("Background.Color"));
+            sb.Begin();
         }
 
         private void MenuButtonBase_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            //var g = FindName("Grid") as Grid;
-            //var animation = new ColorAnimation
-            //{
-            //    To = Color,
-            //    Duration = AnimationSpeed
-            //};
-            //var sb = new Storyboard();
-            //sb.Children.Add(animation);
-            //Storyboard.SetTarget(animation, g);
-            //Storyboard.SetTargetProperty(animation, new PropertyPath("Background.Color"));
-            //sb.Begin();
-
-            Background = new SolidColorBrush(Color) {Opacity = Color.A / 255d};
+            var g = FindName("Grid") as Grid;
+            var animation = new ColorAnimation
+            {
+                To = (Background as SolidColorBrush).Color,
+                Duration = AnimationSpeed
+            };
+            var sb = new Storyboard();
+            sb.Children.Add(animation);
+            Storyboard.SetTarget(animation, g);
+            Storyboard.SetTargetProperty(animation, new PropertyPath("Background.Color"));
+            sb.Begin();
         }
 
         public override void OnApplyTemplate()

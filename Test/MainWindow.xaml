@@ -12,22 +12,23 @@
         Foreground="WhiteSmoke">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="map2.jpg" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="map.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
-        <materialMenu:SideMenu HorizontalAlignment="Left" x:Name="Menu" 
-                               MenuWidth="400" 
-                               Shown="False"
-                               Theme="Primary"
-                               BackgroundOpacity=".9">
+        <materialMenu:SideMenu HorizontalAlignment="Left" x:Name="Menu"
+                               MenuWidth="300"
+                               Theme="Default"
+                               State="Hidden">
             <materialMenu:SideMenu.Menu>
                 <ScrollViewer VerticalScrollBarVisibility="Hidden">
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Foreground="WhiteSmoke" FontFamily="Calibri" FontSize="24" MinHeight="150" FontWeight="UltraBold">
-                            <TextBlock.Background>
-                                <ImageBrush ImageSource="colors.jpg" Stretch="UniformToFill"></ImageBrush>
-                            </TextBlock.Background>
-                            <TextBlock.Text>Welcome</TextBlock.Text>
-                        </TextBlock>
+                        <Border>
+                            <Border.Background>
+                                <ImageBrush ImageSource="Seamless-Polygon-Backgrounds-Vol2-full.jpg" Stretch="None" AlignmentX="Right"></ImageBrush>
+                            </Border.Background>
+                            <Grid Margin="10">
+                                <TextBox Height="200" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Bottom" FontFamily="Calibri" FontSize="18" Foreground="WhiteSmoke" FontWeight="Bold">Welcome</TextBox>
+                            </Grid>
+                        </Border>
                         <materialMenu:MenuButton Image="boss.png" Text="Administration">
                             <materialMenu:MenuButton.Children>
                                 <materialMenu:MenuButton Image="boss.png" Text="Administration"></materialMenu:MenuButton>
@@ -90,7 +91,7 @@
                 </Button.Template>
             </Button>
             <StackPanel Orientation="Vertical" Background="WhiteSmoke">
-                <TextBlock Foreground="Black" TextAlignment="Center" FontFamily="Calibri" FontSize="16">Select a Theme</TextBlock>
+                <TextBlock TextWrapping="Wrap" Foreground="Black" TextAlignment="Center" FontFamily="Calibri" FontSize="16">Select a Theme. Currently colors are not changing correctly. please set theme from XAML.</TextBlock>
                 <Button Margin="10" Background="#303030" Foreground="WhiteSmoke" Click="DefaultClick">Default</Button>
                 <Button Margin="10" Background="#337AB6" Foreground="WhiteSmoke" Click="PrimaryClick">Primary</Button>
                 <Button Margin="10" Background="#5CB75C" Foreground="WhiteSmoke" Click="SuccessClick">Success</Button>
@@ -102,9 +103,11 @@
                 <Button Margin="10" Click="ToggleClosingTypeClick">Toogle Closing Type</Button>
             </StackPanel>
         </StackPanel>
-        <StackPanel Orientation="Vertical" Width="500" HorizontalAlignment="Left">
-            <TextBlock Foreground="Black">This should not be visible</TextBlock>
-            <TextBox></TextBox>
+        <StackPanel Orientation="Vertical" Width="600" HorizontalAlignment="Left">
+            <StackPanel Margin="20" Background="WhiteSmoke" Orientation="Horizontal">
+                <TextBlock Foreground="#303030" VerticalAlignment="Center" Margin="10">Search</TextBlock>
+                <TextBox Height="40" Margin="10" Width="470"></TextBox>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

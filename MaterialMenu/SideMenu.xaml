@@ -5,15 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MaterialMenu"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="800" Loaded="SideMenu_OnLoaded"
+             d:DesignHeight="300" d:DesignWidth="800"
              Name="Control">
     <UserControl.Resources>
-        <Color x:Key="ButtonBackground">#303030</Color>
-        <Color x:Key="ButtonHover">#505050</Color>
-        <SolidColorBrush x:Key="Shadow" Opacity=".2" Color="Black"></SolidColorBrush>
+        <SolidColorBrush x:Key="ButtonBackground" Color="#00000000"></SolidColorBrush>
+        <SolidColorBrush x:Key="ButtonHover" Color="#00000000"></SolidColorBrush>
         <Style TargetType="local:MenuButton">
-            <Setter Property="HoverColor" Value="{DynamicResource ButtonHover}"></Setter>
-            <Setter Property="Color" Value="{DynamicResource ButtonBackground}"></Setter>
+            <Setter Property="Background" Value="{DynamicResource ButtonBackground}"></Setter>
+            <Setter Property="HoverBackground" Value="{DynamicResource ButtonHover}"></Setter>
         </Style>
     </UserControl.Resources>
     <Grid>

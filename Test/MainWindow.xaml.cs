@@ -60,5 +60,17 @@ namespace Test
                 ? ClosingType.Manual 
                 : ClosingType.Auto;
         }
+
+        private SideMenu MapMenuToTheme(SideMenuTheme theme)
+        {
+            //this should not be necesray but colors are not changing correctly
+            //when changing theme porperty... maybe its needed to implement INotifyPropertyChanged
+            return new SideMenu
+            {
+                MenuWidth = Menu.MenuWidth,
+                Theme = theme,
+                Menu = Menu.Menu
+            };
+        }
     }
 }

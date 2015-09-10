@@ -202,7 +202,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -262,6 +261,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Dark64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Seamless-Polygon-Backgrounds-Vol2-full.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="map.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialMenu\MaterialMenu.csproj">

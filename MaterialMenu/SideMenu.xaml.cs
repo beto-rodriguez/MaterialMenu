@@ -17,16 +17,14 @@ namespace MaterialMenu
         public SideMenu()
         {
             InitializeComponent();
-            RenderTransform = new TranslateTransform(-MenuWidth,0);
-            Theme = SideMenuTheme.Primary;
-            BackgroundOpacity = .9;
+            Theme = SideMenuTheme.Default;
             ClosingType = ClosingType.Auto;
             ShadowBackground = new SolidColorBrush {Color = Colors.Black, Opacity = .2};
         }
 
-        public static readonly DependencyProperty ShownProperty = DependencyProperty.Register(
-        "Shown",
-        typeof(bool),
+        public static readonly DependencyProperty StateProperty = DependencyProperty.Register(
+        "State",
+        typeof(MenuState),
         typeof(SideMenu));
 
         public static readonly DependencyProperty ThemeProperty = DependencyProperty.Register(
@@ -42,11 +40,6 @@ namespace MaterialMenu
         public static readonly DependencyProperty MenuProperty = DependencyProperty.Register(
         "Menu",
         typeof(ScrollViewer),
-        typeof(SideMenu));
-
-        public static readonly DependencyProperty BackgroundOpacityProperty = DependencyProperty.Register(
-        "BackgroundOpacity",
-        typeof(double),
         typeof(SideMenu));
 
         public static readonly DependencyProperty ShadowBackgroundProperty = DependencyProperty.Register(
@@ -66,12 +59,6 @@ namespace MaterialMenu
             }
         }
 
-        public double BackgroundOpacity
-        {
-            get { return (double)GetValue(BackgroundOpacityProperty); }
-            set { SetValue(BackgroundOpacityProperty, value); }
-        }
-
         public ScrollViewer Menu
         {
             get { return (ScrollViewer) GetValue(MenuProperty); }
@@ -84,13 +71,13 @@ namespace MaterialMenu
             set { SetValue(MenuWidthProperty, value); }
         }
 
-        public bool Shown
+        public MenuState State
         {
-            get { return (bool)GetValue(ShownProperty); }
+            get { return (MenuState)GetValue(StateProperty); }
             set
             {
-                SetValue(ShownProperty, value);
-                if (value)
+                SetValue(StateProperty, value);
+                if (value == MenuState.Visible)
                 {
                     Show();
                 }
@@ -107,42 +94,42 @@ namespace MaterialMenu
             set
             {
                 SetValue(ThemeProperty, value);
-                var o = BackgroundOpacity;
+                SolidColorBrush buttonBackground;
+                SolidColorBrush buttonHoverBackground;
+                SolidColorBrush background;
                 switch (value)
                 {
                     case SideMenuTheme.Default:
-                        if (Menu != null)
-                            Menu.Background = new SolidColorBrush {Color = Color.FromRgb(30, 30, 30), Opacity = o};
-                        Resources["ButtonHover"] = Color.FromRgb(70, 70, 70);
-                        Resources["ButtonBackground"] = Colors.Transparent;
+                        background = new SolidColorBrush { Color = Color.FromArgb(205, 20, 20, 20) };
+                        buttonBackground = new SolidColorBrush {Color = Color.FromArgb(50,30,30,30)};
+                        buttonHoverBackground = new SolidColorBrush {Color = Color.FromArgb(50, 70,70,70)};
                         break;
                     case SideMenuTheme.Primary:
-                        if (Menu != null)
-                            Menu.Background = new SolidColorBrush {Color = Color.FromRgb(35, 85, 126), Opacity = o };
-                        Resources["ButtonHover"] = Color.FromRgb(45, 110, 163);
-                        Resources["ButtonBackground"] = Colors.Transparent;
+                        background = new SolidColorBrush { Color = Color.FromArgb(205, 24, 57, 85) };
+                        buttonBackground = new SolidColorBrush { Color = Color.FromArgb(50, 35, 85, 126) };
+                        buttonHoverBackground = new SolidColorBrush { Color = Color.FromArgb(50, 45, 110, 163) };
                         break;
                     case SideMenuTheme.Success:
-                        if (Menu != null)
-                            Menu.Background = new SolidColorBrush {Color = Color.FromRgb(65, 129, 65), Opacity = o };
-                        Resources["ButtonHover"] = Color.FromRgb(87, 172, 87);
-                        Resources["ButtonBackground"] = Colors.Transparent;
+                        background = new SolidColorBrush { Color = Color.FromArgb(205, 55, 109, 55) };
+                        buttonBackground = new SolidColorBrush { Color = Color.FromArgb(50, 65, 129, 65) };
+                        buttonHoverBackground = new SolidColorBrush { Color = Color.FromArgb(50, 87, 172, 87) };
                         break;
                     case SideMenuTheme.Warning:
-                        if (Menu != null)
-                            Menu.Background = new SolidColorBrush {Color = Color.FromRgb(179, 129, 58), Opacity = o };
-                        Resources["ButtonHover"] = Color.FromRgb(216, 155, 70);
-                        Resources["ButtonBackground"] = Colors.Transparent;
+                        background = new SolidColorBrush { Color = Color.FromArgb(205, 150, 108, 49) };
+                        buttonBackground = new SolidColorBrush { Color = Color.FromArgb(50, 179, 129, 58) };
+                        buttonHoverBackground = new SolidColorBrush { Color = Color.FromArgb(50, 216, 155, 70) };
                         break;
                     case SideMenuTheme.Danger:
-                        if (Menu != null)
-                           Menu.Background = new SolidColorBrush {Color = Color.FromRgb(179, 69, 65), Opacity = o };
-                        Resources["ButtonHover"] = Color.FromRgb(238, 92, 86);
-                        Resources["ButtonBackground"] = Colors.Transparent;
+                        background = new SolidColorBrush { Color = Color.FromArgb(205, 135, 52, 49) };
+                        buttonBackground = new SolidColorBrush {Color = Color.FromArgb(50, 179, 69, 65)};
+                        buttonHoverBackground = new SolidColorBrush { Color = Color.FromArgb(50, 238, 92, 86) };
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(value), value, null);
                 }
+                Resources["ButtonHover"] = buttonBackground;
+                Resources["ButtonBackground"] = buttonHoverBackground;
+                if(Menu != null) Menu.Background = background;
             }
         }
 
@@ -167,7 +154,7 @@ namespace MaterialMenu
             RenderTransform.BeginAnimation(TranslateTransform.XProperty, animation);
             _isShown = true;
             var p = Parent as Panel;
-            (FindName("ShadowColumn") as ColumnDefinition).Width = new GridLength(p.ActualWidth + MenuWidth);
+            (FindName("ShadowColumn") as ColumnDefinition).Width = new GridLength(10000);
         }
 
         public void Hide()
@@ -179,21 +166,16 @@ namespace MaterialMenu
             };
             RenderTransform.BeginAnimation(TranslateTransform.XProperty, animation);
             _isShown = false;
-            var p = Parent as Panel;
             (FindName("ShadowColumn") as ColumnDefinition).Width = new GridLength(0);
         }
 
         public override void OnApplyTemplate()
         {
             Panel.SetZIndex(this, int.MaxValue);
+            RenderTransform = new TranslateTransform(-MenuWidth, 0);
+            (FindName("MenuColumn") as ColumnDefinition).Width = new GridLength(MenuWidth);
+            State = State;
             Theme = Theme;
-        }
-
-        private void SideMenu_OnLoaded(object sender, RoutedEventArgs e)
-        {
-            //Not sure how to start with menu closed... so this is a litle hack
-            //that looks ugly because you can see menu hiding whn form starts.
-            Shown = Shown;
         }
 
         private void ShadowMouseDown(object sender, MouseButtonEventArgs e)
