@@ -1,6 +1,6 @@
 #Wpf Material Menu
 
-A good looking animated side menu, with just one line of code. It already includes preloaded themes just changing `Theme`. property.
+A good looking animated side menu, with just one line of code. It already includes preloaded themes just changing `Theme`. property, if you dont like themes you can easly set your own colors.
 
 <p align="center">
   <img src="https://dl.dropboxusercontent.com/u/40165535/quxl0.gif" />
@@ -36,6 +36,37 @@ A good looking animated side menu, with just one line of code. It already includ
         </materialMenu:SideMenu>
 ```
 
+and finally this is a custom color set example:
+
+```xml
+<materialMenu:SideMenu HorizontalAlignment="Left" x:Name="CustomMenu"
+                               MenuWidth="300"
+                               State="Hidden"
+                               Theme="None"
+                               ButtonBackground="DodgerBlue"
+                               ButtonHover="DeepSkyBlue"
+                               ShadowBackground="Black">
+            <materialMenu:SideMenu.Menu>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden" Background="Blue">
+                    <StackPanel Orientation="Vertical">
+                        <Border Background="BlueViolet">
+                            <Grid Margin="10">
+                                <TextBox Height="100" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Bottom" FontFamily="Calibri" FontSize="18" Foreground="WhiteSmoke" FontWeight="Bold">This is a custom colors example.</TextBox>
+                            </Grid>
+                        </Border>
+                        <materialMenu:MenuButton Text="Administration"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Text="Packing"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Text="Logistics"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Text="Org"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Text="SaveChanges"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Text="Help"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Text="Close Menu"></materialMenu:MenuButton>
+                    </StackPanel>
+                </ScrollViewer>
+            </materialMenu:SideMenu.Menu>
+        </materialMenu:SideMenu>
+```
+
 <h1>Controls</h1>
 
 <hr/>
@@ -50,12 +81,16 @@ A good looking animated side menu, with just one line of code. It already includ
 
 | Name  | Description | Type |
 | ------------- | ------------- | ------------- |
-| `Theme`  | Gets or sets menu color set  | `SideMenuTheme` (`enum` Default, Primary Success, Warning, Danger) |
+| `Theme`  | Gets or sets menu color set  | `SideMenuTheme` (`enum`  None, Default, Primary Success, Warning, Danger) |
 | `State`  | Gets or sets menu visibility | `MenuState` (`enum` Visible, Hidden) |
 | `MenuWidth` | Gets or sets menu column width | `double` |
 | `Menu` | Gets or sets menu XAML | [`ScrollViewer`](https://msdn.microsoft.com/es-es/library/system.windows.controls.scrollviewer(v=vs.110).aspx) |
-| `ShadowBackground` | Gets or sets menu shadow color | [`SolidColorBrush`](https://msdn.microsoft.com/en-us/library/system.windows.media.solidcolorbrush(v=vs.110).aspx) |
+| `ShadowBackground` | Gets or sets menu shadow color | [`Brush`](https://msdn.microsoft.com/en-us/library/system.windows.media.brush(v=vs.110).aspx) |
+| `ButtonBackground` | Gets or sets background to all `MenuButton` classes inside this menu | [`Brush`](https://msdn.microsoft.com/en-us/library/system.windows.media.brush(v=vs.110).aspx) |
+| `ButtonHover` | Gets or sets background Hover to all `MenuButton` classes inside this menu | [`Brush`](https://msdn.microsoft.com/en-us/library/system.windows.media.brush(v=vs.110).aspx) |
+| `ButtonBackground`
 | `ClosingType` | Gets or sets how menu is closed | `ClosingType` (`enum` Auto, Manual) |
+
 
 <h4>Methods</h4>
 
