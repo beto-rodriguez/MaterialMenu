@@ -14,6 +14,31 @@
         <Grid.Background>
             <ImageBrush ImageSource="map.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
+        <materialMenu:SideMenu HorizontalAlignment="Left" x:Name="CustomMenu"
+                               MenuWidth="300"
+                               Theme="None"
+                               State="Hidden"
+                               ButtonBackground="DodgerBlue"
+                               ButtonHover="DeepSkyBlue">
+            <materialMenu:SideMenu.Menu>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden" Background="Blue">
+                    <StackPanel Orientation="Vertical">
+                        <Border Background="BlueViolet">
+                            <Grid Margin="10">
+                                <TextBox Height="100" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Bottom" FontFamily="Calibri" FontSize="18" Foreground="WhiteSmoke" FontWeight="Bold">This is a custom colors example.</TextBox>
+                            </Grid>
+                        </Border>
+                        <materialMenu:MenuButton Image="boss.png" Text="Administration"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="boxl.png" Text="Packing" MouseDown="UIElement_OnMouseDown"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="bugl.png" Text="Logistics"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="orgl.png" Text="Org"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="savel.png" Text="SaveChanges"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="Helpl.png" Text="Help"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="timesl.png" Text="Close Menu"></materialMenu:MenuButton>
+                    </StackPanel>
+                </ScrollViewer>
+            </materialMenu:SideMenu.Menu>
+        </materialMenu:SideMenu>
         <materialMenu:SideMenu HorizontalAlignment="Left" x:Name="Menu"
                                MenuWidth="300"
                                Theme="Default"
@@ -82,6 +107,19 @@
                     <ControlTemplate>
                         <Border Height="50" Width="50" HorizontalAlignment="Right"
                                 Background="WhiteSmoke"
+                                BorderBrush="DarkGray"
+                                BorderThickness="1"
+                                CornerRadius="3">
+                            <Image Source="Dark64.png" Margin="12"></Image>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Margin="10" Click="Custom_OnClick">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border Height="50" Width="50" HorizontalAlignment="Right"
+                                Background="#00B500"
                                 BorderBrush="DarkGray"
                                 BorderThickness="1"
                                 CornerRadius="3">

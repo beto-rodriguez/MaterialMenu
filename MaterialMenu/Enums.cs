@@ -2,6 +2,7 @@
 {
     public enum SideMenuTheme
     {
+        None,
         Default,
         Primary,
         Success,

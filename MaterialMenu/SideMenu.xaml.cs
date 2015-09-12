@@ -44,14 +44,42 @@ namespace MaterialMenu
 
         public static readonly DependencyProperty ShadowBackgroundProperty = DependencyProperty.Register(
         "ShadowBackground",
-        typeof(SolidColorBrush),
+        typeof(Brush),
+        typeof(SideMenu));
+
+        public static readonly DependencyProperty ButtonBackgroundProperty = DependencyProperty.Register(
+        "ButtonBackground",
+        typeof(Brush),
+        typeof(SideMenu));
+
+        public static readonly DependencyProperty ButtonHoverProperty = DependencyProperty.Register(
+        "ButtonHover",
+        typeof(Brush),
         typeof(SideMenu));
 
         public ClosingType ClosingType { get; set; }
 
-        public SolidColorBrush ShadowBackground
+        public Brush ButtonBackground
         {
-            get { return (SolidColorBrush)GetValue(ShadowBackgroundProperty); }
+            get { return (Brush)GetValue(ButtonBackgroundProperty); }
+            set
+            {
+                SetValue(ButtonBackgroundProperty, value);
+            }
+        }
+
+        public Brush ButtonHover
+        {
+            get { return (Brush)GetValue(ButtonHoverProperty); }
+            set
+            {
+                SetValue(ButtonHoverProperty, value);
+            }
+        }
+
+        public Brush ShadowBackground
+        {
+            get { return (Brush)GetValue(ShadowBackgroundProperty); }
             set
             {
                 SetValue(ShadowBackgroundProperty, value);
@@ -93,6 +121,7 @@ namespace MaterialMenu
             get { return (SideMenuTheme) GetValue(ThemeProperty); }
             set
             {
+                if (value == SideMenuTheme.None) return;
                 SetValue(ThemeProperty, value);
                 SolidColorBrush buttonBackground;
                 SolidColorBrush buttonHoverBackground;
