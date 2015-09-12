@@ -19,7 +19,6 @@ namespace MaterialMenu
             InitializeComponent();
             Theme = SideMenuTheme.Default;
             ClosingType = ClosingType.Auto;
-            ShadowBackground = new SolidColorBrush {Color = Colors.Black, Opacity = .2};
         }
 
         public static readonly DependencyProperty StateProperty = DependencyProperty.Register(
@@ -83,8 +82,14 @@ namespace MaterialMenu
             set
             {
                 SetValue(ShadowBackgroundProperty, value);
-                Resources["Shadow"] = value;
+                Resources["Shadow"] = value ?? new SolidColorBrush { Color = Colors.Black, Opacity = .2 };
             }
+        }
+
+
+        private static void Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var c = d as SideMenu;
         }
 
         public ScrollViewer Menu
@@ -96,7 +101,10 @@ namespace MaterialMenu
         public double MenuWidth
         {
             get { return (double) GetValue(MenuWidthProperty); }
-            set { SetValue(MenuWidthProperty, value); }
+            set
+            {
+                SetValue(MenuWidthProperty, value);
+            }
         }
 
         public MenuState State
@@ -203,8 +211,12 @@ namespace MaterialMenu
             Panel.SetZIndex(this, int.MaxValue);
             RenderTransform = new TranslateTransform(-MenuWidth, 0);
             (FindName("MenuColumn") as ColumnDefinition).Width = new GridLength(MenuWidth);
+
+            //this is a little hack to fire propertu changes.
+            //wpf so complex, it could be much simple...
             State = State;
             Theme = Theme;
+            ShadowBackground = ShadowBackground;
         }
 
         private void ShadowMouseDown(object sender, MouseButtonEventArgs e)

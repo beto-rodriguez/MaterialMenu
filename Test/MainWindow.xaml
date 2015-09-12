@@ -19,7 +19,8 @@
                                Theme="None"
                                State="Hidden"
                                ButtonBackground="DodgerBlue"
-                               ButtonHover="DeepSkyBlue">
+                               ButtonHover="DeepSkyBlue"
+                               ShadowBackground="Black">
             <materialMenu:SideMenu.Menu>
                 <ScrollViewer VerticalScrollBarVisibility="Hidden" Background="Blue">
                     <StackPanel Orientation="Vertical">

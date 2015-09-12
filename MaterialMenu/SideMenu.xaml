@@ -10,6 +10,7 @@
     <UserControl.Resources>
         <SolidColorBrush x:Key="ButtonBackground" Color="{Binding ButtonHover, ElementName=Control}"></SolidColorBrush>
         <SolidColorBrush x:Key="ButtonHover" Color="{Binding ButtonBackground, ElementName=Control}"></SolidColorBrush>
+        <SolidColorBrush x:Key="Shadow" Color="{Binding ShadowBackground, ElementName=Control}"></SolidColorBrush>
         <Style TargetType="local:MenuButton">
             <Setter Property="Background" Value="{DynamicResource ButtonBackground}"></Setter>
             <Setter Property="HoverBackground" Value="{DynamicResource ButtonHover}"></Setter>
