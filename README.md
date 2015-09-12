@@ -69,8 +69,6 @@ and finally this is a custom color set example:
 
 <h1>Controls</h1>
 
-<hr/>
-
 <h3>A. <a href="https://github.com/beto-rodriguez/MaterialMenu/blob/master/MaterialMenu/SideMenu.xaml.cs">SideMenu</a></h3>
 
 <h4>Inheritance Hierarchy</h4>
@@ -88,7 +86,6 @@ and finally this is a custom color set example:
 | `ShadowBackground` | Gets or sets menu shadow color | [`Brush`](https://msdn.microsoft.com/en-us/library/system.windows.media.brush(v=vs.110).aspx) |
 | `ButtonBackground` | Gets or sets background to all `MenuButton` classes inside this menu | [`Brush`](https://msdn.microsoft.com/en-us/library/system.windows.media.brush(v=vs.110).aspx) |
 | `ButtonHover` | Gets or sets background Hover to all `MenuButton` classes inside this menu | [`Brush`](https://msdn.microsoft.com/en-us/library/system.windows.media.brush(v=vs.110).aspx) |
-| `ButtonBackground`
 | `ClosingType` | Gets or sets how menu is closed | `ClosingType` (`enum` Auto, Manual) |
 
 
