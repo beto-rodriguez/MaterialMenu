@@ -18,8 +18,8 @@
                                MenuWidth="300"
                                Theme="None"
                                State="Hidden"
-                               ButtonBackground="DodgerBlue"
-                               ButtonHover="DeepSkyBlue"
+                               ButtonBackground="Red"
+                               ButtonHover="Black"
                                ShadowBackground="Black">
             <materialMenu:SideMenu.Menu>
                 <ScrollViewer VerticalScrollBarVisibility="Hidden" Background="Blue">
