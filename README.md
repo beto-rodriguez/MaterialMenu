@@ -6,6 +6,10 @@ A good looking animated side menu, with just one line of code. It already includ
   <img src="https://dl.dropboxusercontent.com/u/40165535/quxl0.gif" />
 </p>
 
+#License
+
+Practically do whatever you want with this code. https://github.com/beto-rodriguez/MaterialMenu/blob/master/LICENSE.txt
+
 #Instalation
 
 1. Install from **[NuGet](https://www.nuget.org/packages/MaterialMenu/)** `Install-Package MaterialMenu`
