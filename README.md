@@ -1,3 +1,5 @@
+#Right now this repository is just for test porpoises, and should not be used in any production project
+
 #Wpf Material Menu
 
 A good looking animated side menu, with just one line of code. It already includes preloaded themes just changing `Theme`. property, if you dont like themes you can easly set your own colors.
