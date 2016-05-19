@@ -179,9 +179,9 @@ namespace MaterialMenu
                     default:
                         throw new ArgumentOutOfRangeException(nameof(value), value, null);
                 }
-                Resources["ButtonHover"] = buttonBackground;
-                Resources["ButtonBackground"] = buttonHoverBackground;
-                if(Menu != null) Menu.Background = background;
+                ButtonBackground = buttonBackground;
+                ButtonHover = buttonHoverBackground;
+                if (Menu != null) Menu.Background = background;
             }
         }
 
