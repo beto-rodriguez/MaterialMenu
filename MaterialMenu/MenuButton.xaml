@@ -10,29 +10,33 @@
              MouseLeave="MenuButtonBase_OnMouseLeave">
     <Grid x:Name="Grid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid x:Name="Trigger" Grid.Column="0" Grid.Row="0" MouseDown="UserControl_MouseDown">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Image x:Name="Img" Grid.Row="0" Grid.Column="0" MaxHeight="20" VerticalAlignment="Center" Margin="15 10"></Image>
-            <TextBlock x:Name="Txt" Grid.Row="0" Grid.Column="1" Text="{Binding Text}" VerticalAlignment="Center" FontFamily="Calibri" FontSize="18"></TextBlock>
+            <Image x:Name="Img" Grid.Row="0" Grid.Column="0" MaxHeight="20" VerticalAlignment="Center" Margin="15 10"/>
+            <TextBlock x:Name="Txt" Grid.Row="0" Grid.Column="1" Text="{Binding Text}" VerticalAlignment="Center" FontFamily="Calibri" FontSize="18"/>
         </Grid>
-        <Image x:Name="Chevron" Grid.Row="0" Grid.Column="1" Source="Images/Light24.png" Width="15" HorizontalAlignment="Left" MouseDown="UserControl_MouseDown"></Image>
+        <Image x:Name="Chevron" Grid.Row="0" Grid.Column="1" Source="Images/Light24.png" Width="15" HorizontalAlignment="Left" MouseDown="UserControl_MouseDown">
+            <Image.RenderTransform>
+                <RotateTransform x:Name="ChevronRotate" CenterX="7.5" CenterY="7.5"/>
+            </Image.RenderTransform>
+        </Image>
         <ItemsControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                              ItemsSource="{Binding}"
-                              Height="0"
-                              x:Name="Chld">
+                      ItemsSource="{Binding}"
+                      Height="0"
+                      x:Name="Chld">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <local:MenuButton Text="{Binding Text}" Image="{Binding Image}" Height="30"></local:MenuButton>
+                    <local:MenuButton Text="{Binding Text}" Image="{Binding Image}" Height="30"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -40,7 +44,7 @@
             <Style TargetType="Grid">
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="true">
-                        <Setter Property="Cursor" Value="Hand"></Setter>
+                        <Setter Property="Cursor" Value="Hand"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
