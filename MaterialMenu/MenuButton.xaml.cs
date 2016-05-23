@@ -28,6 +28,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace MaterialMenu
 {
@@ -128,6 +129,7 @@ namespace MaterialMenu
                 tb.Foreground = Theme == UiTheme.Light
                     ? Brushes.WhiteSmoke
                     : new SolidColorBrush { Color = Color.FromRgb(30, 30, 30) };
+
             }
         }
 
@@ -175,12 +177,28 @@ namespace MaterialMenu
 
         private void Open()
         {
+            var parent = FindName("ChevronRotate") as RotateTransform;
+            var rotateAnimation = new DoubleAnimation
+            {
+                To = 90,
+                Duration = AnimationSpeed
+            };
+            parent.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+
             Expand(ExpandedHeight);
             _areChildrenVisible = true;
         }
 
         private void Close()
         {
+            var parent = FindName("ChevronRotate") as RotateTransform;
+            var rotateAnimation = new DoubleAnimation
+            {
+                To = 0,
+                Duration = AnimationSpeed
+            };
+            parent.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+
             foreach (var child in Children) child.Close();
             if (!_areChildrenVisible) return;
             var c = FindName("Chld") as ItemsControl;

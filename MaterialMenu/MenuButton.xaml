@@ -25,7 +25,11 @@
             <Image x:Name="Img" Grid.Row="0" Grid.Column="0" MaxHeight="20" VerticalAlignment="Center" Margin="15 10"/>
             <TextBlock x:Name="Txt" Grid.Row="0" Grid.Column="1" Text="{Binding Text}" VerticalAlignment="Center" FontFamily="Calibri" FontSize="18"/>
         </Grid>
-        <Image x:Name="Chevron" Grid.Row="0" Grid.Column="1" Source="Images/Light24.png" Width="15" HorizontalAlignment="Left" MouseDown="UserControl_MouseDown"/>
+        <Image x:Name="Chevron" Grid.Row="0" Grid.Column="1" Source="Images/Light24.png" Width="15" HorizontalAlignment="Left" MouseDown="UserControl_MouseDown">
+            <Image.RenderTransform>
+                <RotateTransform x:Name="ChevronRotate" CenterX="7.5" CenterY="7.5"/>
+            </Image.RenderTransform>
+        </Image>
         <ItemsControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                       ItemsSource="{Binding}"
                       Height="0"
