@@ -1,4 +1,4 @@
-#Right now this repository is just for test porpoises, and should not be used in any production project
+#Right now this repository is just for testing porpoises, and should not be used in any production project
 
 #Wpf Material Menu
 
